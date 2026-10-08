@@ -52,7 +52,7 @@ function App() {
 
         <div className="field">
           <label htmlFor="repeats">Number of repeats</label>
-          <input type="number" id="repeats" name="repeats" min="1" />
+          <input type="number" id="repeats" required name="repeats" min="1" />
         </div>
 
         <div className="form-actions">
@@ -72,7 +72,7 @@ function App() {
             <span className="count-current">{count}</span> / {patternInfo.repeats}
           </p>
           <progress className="progress" value={count} max={patternInfo.repeats} aria-label="Repeats completed" />
-          <button className="btn btn-add" required aria-label="Add repeat" onClick={() => {
+          <button className="btn btn-add" aria-label="Add repeat" onClick={() => {
             const newCount = count + 1
             setCount(newCount)
             localStorage.setItem('repeatCount', newCount)
