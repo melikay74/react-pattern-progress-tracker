@@ -15,7 +15,7 @@ function App() {
       setCount(0)
       return {}
     }
-    const newPatternInfo = { ...Object.fromEntries(formData)}
+    const newPatternInfo = Object.fromEntries(formData)
     localStorage.setItem('patternInfo', JSON.stringify(newPatternInfo))
     setCount(0) // Reset count when a new pattern is submitted
     localStorage.removeItem('repeatCount') // Reset repeat count in localStorage
@@ -57,7 +57,7 @@ function App() {
 
         <div className="form-actions">
           <button className="btn btn-primary">Submit</button>
-          <button name="intent" value="clear" className="btn btn-quiet">Clear</button>
+          <button name="intent" value="clear" formNoValidate className="btn btn-quiet">Clear</button>
         </div>
     </form>
 
@@ -72,7 +72,7 @@ function App() {
             <span className="count-current">{count}</span> / {patternInfo.repeats}
           </p>
           <progress className="progress" value={count} max={patternInfo.repeats} aria-label="Repeats completed" />
-          <button className="btn btn-add" aria-label="Add repeat" onClick={() => {
+          <button className="btn btn-add" required aria-label="Add repeat" onClick={() => {
             const newCount = count + 1
             setCount(newCount)
             localStorage.setItem('repeatCount', newCount)
